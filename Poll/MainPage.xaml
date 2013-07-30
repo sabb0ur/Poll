@@ -1,0 +1,31 @@
+﻿<Page xmlns:Controls="using:Callisto.Controls" 
+    x:Class="Poll.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Poll"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Margin="40" Text="Poll Project" Style="{StaticResource HeaderTextStyle}" />
+        <GridView x:Name="PollItemsGridView" Grid.Row="1" ItemTemplate="{StaticResource Standard250x250ItemTemplate}"/>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="Create Option" Style="{StaticResource SubheaderTextStyle}" />
+            <Controls:WatermarkTextBox Margin="0,10,0,0" Watermark="Name" x:Name="NameTextBox" />
+            <!--<Controls:WatermarkTextBox Margin="0,10,0,0" Watermark="Count" x:Name="CountTextBox" />-->
+            <Button Height="50" Width="150" Content="Add" Margin="0,20,0,0" HorizontalAlignment="Right" Click="AddOption_Click" />
+            <ContentControl Margin="20" ContentTemplate="{StaticResource Standard250x250ItemTemplate}" HorizontalAlignment="Left" Content="{Binding SelectedItem, ElementName=PollItemsGridView}" />
+            <Button Content="Vote" Height="50" Width="150" Margin="20" Click="Vote_Click" />
+            <Button Content="Delete all votes" Height="50" Width="150" Margin="20" Click="DeleteVotes_Click" />
+        </StackPanel>
+    </Grid>
+</Page>
